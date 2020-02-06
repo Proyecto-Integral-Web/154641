@@ -24,11 +24,15 @@
         <input
           type="email"
           class="form-control col"
+          placeholder="E-mail"
+          v-model="user.email"
         >
-        <h6>Contrasena</h6>
+        <h6>Contraseña</h6>
         <input
-          type="contrasena"
+          type="password"
           class="form-control col"
+          placeholder="Contraseña"
+          v-model="user.password"
         >
         <div class="row">
           <div class="col-md-3">
@@ -38,7 +42,10 @@
             <h6>Aceptas terminos y condiciones?</h6>
           </div>
         </div>
-        <button class="btn btn-purple btn-blocck">Login</button>
+        <button
+          class="btn btn-purple btn-blocck"
+          @click="login"
+        >Login</button>
       </div>
     </div>
   </section>
@@ -46,7 +53,35 @@
 
 <script lang="js">
 export default {
-  name: 'LoginForm'
+  name: 'LoginForm',
+  data () {
+    return {
+      user: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  created () {
+    console.log('Estoy en created')
+  },
+  mounted () {
+    console.log('Estoy en mounted')
+  },
+  methods: {
+    login () {
+      let user = {
+        email: 'esto es local'
+      }
+      console.log('Soy el login')
+      console.log('User local' + user.email)
+      console.log('User local' + this.user.password)
+
+      setTimeout(() => {
+        this.$router.push({ name: 'about' })
+      }, 1000)
+    }
+  }
 }
 </script>
 
