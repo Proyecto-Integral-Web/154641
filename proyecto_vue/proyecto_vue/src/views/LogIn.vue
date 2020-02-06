@@ -1,10 +1,11 @@
 <template>
   <div class="login container">
-    <div class="card p-2">
-      <div class="row">
-        <div class="col">
-          <LoginForm></LoginForm>
-        </div>
+    <div class="row">
+      <div class="col-md-8">
+        <ImgLogin></ImgLogin>
+      </div>
+      <div class="col">
+        <LoginForm></LoginForm>
       </div>
     </div>
   </div>
@@ -13,10 +14,13 @@
 <script lang="js">
 
 import LoginForm from '@/components/LoginForm'
+import ImgLogin from '@/components/ImgLogin'
+
 export default {
   name: 'login',
   components: {
-    LoginForm
+    LoginForm,
+    ImgLogin
   }
 }
 </script>
