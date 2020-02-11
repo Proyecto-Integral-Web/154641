@@ -6,39 +6,39 @@
         <h3>Welcome Back</h3>
         <div class="row">
           <div class="col-md-6">
-            <h6>Nombre</h6>
+            <h6 class="textoBold">Nombre</h6>
             <input
               type="name"
-              class="form-control col"
+              class="col textoImput"
             >
           </div>
           <div class="col-md-6">
-            <h6>Apellido</h6>
+            <h6 class="textoBold">Apellido</h6>
             <input
               type="name"
-              class="form-control col"
+              class="col textoImput"
             >
           </div>
         </div>
-        <h6>Email</h6>
+        <h6 class="textoBold">Email</h6>
         <input
           type="email"
-          class="form-control col"
-          placeholder="E-mail"
+          class="col textoImput"
+          placeholder="correo@hotmail.com"
           v-model="user.email"
         >
-        <h6>Contraseña</h6>
+        <h6 class="textoBold">Contraseña</h6>
         <input
           type="password"
-          class="form-control col"
+          class="col textoImput"
           placeholder="Contraseña"
           v-model="user.password"
         >
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-1">
             <input type="checkbox">
           </div>
-          <div class="col-md-9">
+          <div class="col-md-11">
             <h6>Aceptas terminos y condiciones?</h6>
           </div>
         </div>
@@ -94,7 +94,18 @@ export default {
   }
 }
 
+.textoImput {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
 h6 {
   text-align: left;
+}
+
+.textoBold {
+  font-weight: bold;
 }
 </style>
