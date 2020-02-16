@@ -2,25 +2,10 @@
   <section>
     <div class="row">
       <div class="col">
-        <h3>Hellow</h3>
-        <h3>Welcome Back</h3>
-        <div class="row">
-          <div class="col-md-6">
-            <h6 class="textoBold">Nombre</h6>
-            <input
-              type="name"
-              class="col textoImput"
-            >
-          </div>
-          <div class="col-md-6">
-            <h6 class="textoBold">Apellido</h6>
-            <input
-              type="name"
-              class="col textoImput"
-            >
-          </div>
-        </div>
+        <h3>Bienvenido</h3>
+        <h3>Ingresa tu cuenta</h3>
         <h6 class="textoBold">Email</h6>
+
         <input
           type="email"
           class="col textoImput"
@@ -39,19 +24,20 @@
             <input type="checkbox">
           </div>
           <div class="col-md-11">
-            <h6>Aceptas terminos y condiciones?</h6>
+            <h6>Recordarme</h6>
           </div>
         </div>
         <button
           class="btn btn-purple btn-blocck"
-          @click="login"
-        >Login</button>
+          @click="Ingresar"
+        >Ingresar</button>
       </div>
     </div>
   </section>
 </template>
 
 <script lang="js">
+import Auth from '@/config/auth.js'
 export default {
   name: 'LoginForm',
   data () {

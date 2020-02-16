@@ -2,7 +2,10 @@
   <div class="login container">
     <div class="row">
       <div class="col-md-8">
-        <ImgLogin></ImgLogin>
+        <img
+          src="../assets/Ingresar.png"
+          width="500px"
+        >
       </div>
       <div class="col">
         <LoginForm></LoginForm>
@@ -14,13 +17,11 @@
 <script lang="js">
 
 import LoginForm from '@/components/LoginForm'
-import ImgLogin from '@/components/ImgLogin'
 
 export default {
   name: 'login',
   components: {
-    LoginForm,
-    ImgLogin
+    LoginForm
   }
 }
 </script>

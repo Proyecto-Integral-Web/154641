@@ -14,11 +14,13 @@
 <script lang="js">
 
 import Registro from '@/components/Registro'
+import ImgLogin from '@/components/ImgLogin'
 
 export default {
   name: 'register',
   components: {
-    Registro
+    Registro,
+    ImgLogin
   }
 }
 </script>
