@@ -37,7 +37,6 @@
 </template>
 
 <script lang="js">
-import Auth from '@/config/auth.js'
 export default {
   name: 'LoginForm',
   data () {

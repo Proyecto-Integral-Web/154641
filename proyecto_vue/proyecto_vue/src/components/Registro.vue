@@ -10,13 +10,15 @@
             <input
               type="name"
               class="col textoImput"
+              v-model="user.name"
             >
           </div>
           <div class="col-md-6">
             <h6 class="textoBold">Apellido</h6>
             <input
-              type="name"
+              type="apellido"
               class="col textoImput"
+              v-model="user.apellido"
             >
           </div>
         </div>
@@ -52,11 +54,14 @@
 </template>
 
 <script lang="js">
+import Auth from '@/config/auth.js'
 export default {
   name: 'Resgistro',
   data () {
     return {
       user: {
+        name: '',
+        apellido: '',
         email: '',
         password: ''
       }
@@ -69,16 +74,16 @@ export default {
     console.log('Estoy en mounted')
   },
   methods: {
-    login () {
-      let user = {
-        email: 'esto es local'
-      }
-      console.log('Soy el login')
-      console.log('User local' + user.email)
-      console.log('User local' + this.user.password)
+    Registrarse () {
+      console.log('Soy el registro')
+      console.log(this.user.name)
+      console.log(this.user.apellido)
+      console.log(this.user.email)
+      console.log(this.user.password)
 
       setTimeout(() => {
         this.$router.push({ name: 'about' })
+        Auth.Registrarse(this.user)
       }, 1000)
     }
   }
