@@ -29,7 +29,7 @@
         </div>
         <button
           class="btn btn-purple btn-blocck"
-          @click="Ingresar"
+          @click="login"
         >Ingresar</button>
       </div>
     </div>
@@ -37,6 +37,7 @@
 </template>
 
 <script lang="js">
+import Auth from '@/config/auth.js'
 export default {
   name: 'LoginForm',
   data () {
@@ -62,9 +63,11 @@ export default {
       console.log('User local' + user.email)
       console.log('User local' + this.user.password)
 
-      setTimeout(() => {
+      Auth.login(this.user)
+
+      /* setTimeout(() => {
         this.$router.push({ name: 'about' })
-      }, 1000)
+      }, 1000) */
     }
   }
 }
