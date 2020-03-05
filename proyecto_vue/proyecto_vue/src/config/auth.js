@@ -1,5 +1,6 @@
 import fireApp from './_firebase'
 import router from '@/router'
+
 export default {
   logOut () {
     fireApp.auth().signOut()
@@ -13,12 +14,26 @@ export default {
     }
   },
 
+  actualizarUsuario (data) {
+    let newUser = {
+      displayName: data.displayName,
+      displayLastName: data.apellido,
+      email: data.email
+    }
+
+    fireApp
+      .auth()
+      .updateCurrentUser(newUser)
+      .catch(err => console.table(err))
+    router.push('about')
+  },
+
   login (data) {
     fireApp.auth
       .signInWithEmailAndPassword(data.email, data.password)
       .then(result => {
         console.log(result)
-        router.push({ name: 'about' })
+        router.push({ name: 'perfil' })
       })
       .catch(err => {
         console.log(err)
@@ -44,7 +59,6 @@ export default {
           email: result.user.email,
           id: result.user.id
         }
-        // newUser.displayName = data.nombre
 
         fireApp
           .auth()
@@ -53,7 +67,7 @@ export default {
       })
       .catch(err => {
         console.table(err)
-      }) // esta funcion es asincrona
+      })
     console.log(data)
   }
 }

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/LogIn.vue'
 import Register from '../views/Register.vue'
 import Perfil from '../views/Perfil.vue'
+import Juego from '../views/Juego.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,14 @@ const routes = [
     path: '/perfil',
     name: 'perfil',
     component: Perfil,
+    meta: {
+      auth: false
+    }
+  },
+  {
+    path: '/juego/:no_partida',
+    name: 'juego',
+    component: Juego,
     meta: {
       auth: false
     }

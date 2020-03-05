@@ -4,7 +4,8 @@
       <router-link to="/">Ingresar</router-link> |
       <router-link to="/register">Crear Cuenta</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/perfil">Perfil</router-link>
+      <router-link to="/perfil">Perfil</router-link> |
+      <router-link to="/juego">Juego</router-link>
     </div>
     <router-view />
   </div>

@@ -2,7 +2,8 @@
   <div class="perfil container">
     <div class="row">
       <div class="col">
-        <Perfil></Perfil>
+        <PerfilForm>
+        </PerfilForm>
       </div>
     </div>
   </div>
@@ -10,12 +11,12 @@
 
 <script lang="js">
 
-import Perfil from '@/components/PerfilForm'
+import PerfilForm from '@/components/PerfilForm'
 
 export default {
-  name: 'register',
+  name: 'perfil',
   components: {
-    Perfil
+    PerfilForm
   }
 }
 </script>

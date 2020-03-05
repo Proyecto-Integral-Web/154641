@@ -6,11 +6,18 @@
         <h3>Ingresa tu cuenta</h3>
         <h6 class="textoBold">Email</h6>
 
+        <alerts-component
+          v-if="showError"
+          :message="errorMessage"
+          :code="errorCode"
+        ></alerts-component>
+
         <input
           type="email"
           class="col textoImput"
           placeholder="correo@hotmail.com"
           v-model="user.email"
+          @keypress="showError = false"
         >
         <h6 class="textoBold">Contraseña</h6>
         <input
@@ -18,15 +25,19 @@
           class="col textoImput"
           placeholder="Contraseña"
           v-model="user.password"
+          @keypress.enter="login"
+          @keypress="showError = false"
         >
+
         <div class="row">
-          <div class="col-md-1">
-            <input type="checkbox">
+          <div class="col">
+            <small>Recordarme</small>
           </div>
-          <div class="col-md-11">
-            <h6>Recordarme</h6>
+          <div class="col">
+            <small>Olvidaste tu contrasena?</small>
           </div>
         </div>
+
         <button
           class="btn btn-purple btn-blocck"
           @click="login"
@@ -56,12 +67,9 @@ export default {
   },
   methods: {
     login () {
-      let user = {
-        email: 'esto es local'
-      }
       console.log('Soy el login')
-      console.log('User local' + user.email)
-      console.log('User local' + this.user.password)
+      console.log(this.user.email)
+      console.log(this.user.password)
 
       Auth.login(this.user)
 
