@@ -9,10 +9,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (to.meta.auth) {
     console.log('Necesita permiso para entrar')
-    let user = Auth.checkUser()
+    let user = await Auth.checkUser()
     console.log(`User: ${user}`)
     if (user == null) {
       next({ name: 'login' })

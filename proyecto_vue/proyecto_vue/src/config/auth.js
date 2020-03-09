@@ -7,40 +7,27 @@ export default {
     router.push({ name: 'login' })
   },
 
-  checkUser () {
+  async checkUser () {
     let user = fireApp.auth().currentUser
     if (user) {
       return user
     }
+    return null
   },
 
-  actualizarUsuario (data) {
-    let newUser = {
-      displayName: data.displayName,
-      displayLastName: data.apellido,
-      email: data.email
-    }
-
-    fireApp
-      .auth()
-      .updateCurrentUser(newUser)
-      .catch(err => console.table(err))
-    router.push('about')
-  },
-
-  login (data) {
-    fireApp.auth
-      .signInWithEmailAndPassword(data.email, data.password)
-      .then(result => {
+  async login (data) {
+    await fireApp.auth().signInWithEmailAndPassword(data.email, data.password).then(
+      (result) => {
         console.log(result)
         router.push({ name: 'perfil' })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      }
+    ).catch((err) => {
+      console.log(err)
+      return Promise.reject(err)
+    })
   },
 
-  Registrarse (data) {
+  async Registrarse (data) {
     if (
       data.name === '' ||
       data.apellido === '' ||
@@ -49,7 +36,7 @@ export default {
     ) {
       return alert('todos los campos son obligatorios')
     }
-    fireApp
+    await fireApp
       .auth()
       .createUserWithEmailAndPassword(data.email, data.password)
       .then(result => {
@@ -57,7 +44,7 @@ export default {
           displayName: data.name,
           displayLastName: data.apellido,
           email: result.user.email,
-          id: result.user.id
+          uid: result.user.id
         }
 
         fireApp
@@ -65,7 +52,7 @@ export default {
           .updateCurrentUser(newUser)
           .catch(err => console.table(err))
       })
-      .catch(err => {
+      .catch((err) => {
         console.table(err)
       })
     console.log(data)

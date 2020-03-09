@@ -1,6 +1,9 @@
 <template>
   <section>
     <div class="row">
+      <div>
+        <h3>{{user.name}}</h3>
+      </div>
       <div class="col-md-6">
         <img
           class="perfilFoto"
@@ -36,8 +39,8 @@
 </template>
 
 <script lang="js">
-import Auth from '@/config/auth.js'
-// import Firebase from '@/config/_firebase.js'
+// import Auth from '@/config/auth.js'
+import Firebase from '@/config/_firebase.js'
 export default {
   name: 'PerfilForm',
   data () {
@@ -48,19 +51,30 @@ export default {
         email: ''
       }
     }
-  }, /*
+  },
   created () {
     let perfilUsuario = Firebase.auth().currentData
     this.user.name = perfilUsuario.displayName
     this.user.apellido = perfilUsuario.displayLastName
     this.user.email = perfilUsuario.email
-  }, */
+  },
+  mounted () {
+    console.log('Estoy en mounted')
+  },
   methods: {
-    logOut () {
-      return Auth.logOut()
-    },
     actualizar () {
-      Auth.actualizarUsuario(this.usuario)
+      let usuarioAcual = Firebase.auth().currentUser
+
+      usuarioAcual.updateProfile({
+        displayName: this.user.name,
+        displayLastName: this.user.apellido,
+        email: this.user.email
+      }).then((result) => {
+        console.log(result)
+        return alert('Update')
+      }).catch((err) => {
+        console.table(err)
+      })
     }
   }
 }

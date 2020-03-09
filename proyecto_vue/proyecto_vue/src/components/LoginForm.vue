@@ -6,14 +6,9 @@
         <h3>Ingresa tu cuenta</h3>
         <h6 class="textoBold">Email</h6>
 
-        <alerts-component
-          v-if="showError"
-          :message="errorMessage"
-          :code="errorCode"
-        ></alerts-component>
-
         <input
           type="email"
+          name="email"
           class="col textoImput"
           placeholder="correo@hotmail.com"
           v-model="user.email"
@@ -22,6 +17,7 @@
         <h6 class="textoBold">Contraseña</h6>
         <input
           type="password"
+          name="password"
           class="col textoImput"
           placeholder="Contraseña"
           v-model="user.password"
