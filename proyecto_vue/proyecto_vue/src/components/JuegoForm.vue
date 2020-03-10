@@ -7,20 +7,21 @@
     </div>
 
     <div class="row renglon">
-      <div class="col-md-4">
+      <div class="col">
         <button>Piedra</button>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-4 auto options">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 auto opciones">
         <div class="row">
           <div
-            class="col col-sm-4"
+            class="col col-sm-4 opcion"
             v-for="(option, key) in options"
             :key="key"
             @click="select(key)"
-          ></div>
+          >{{option}}</div>
         </div>
       </div>
     </div>
@@ -54,7 +55,13 @@ export default {
   padding: 10px;
 }
 
-.opcion {
-  cursor: pointer;
+.opciones {
+  background: grey;
+  .opcion {
+    cursor: pointer;
+    &:hover {
+      background: darkgray;
+    }
+  }
 }
 </style>

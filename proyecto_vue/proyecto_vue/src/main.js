@@ -7,6 +7,10 @@ import store from './store'
 import Auth from './config/auth'
 import 'bootstrap/dist/css/bootstrap.css'
 
+import { firestorePlugin } from 'vuefire'
+
+Vue.use(firestorePlugin)
+
 Vue.config.productionTip = false
 
 router.beforeEach(async (to, from, next) => {
