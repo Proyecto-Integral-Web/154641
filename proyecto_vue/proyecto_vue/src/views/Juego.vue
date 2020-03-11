@@ -1,15 +1,29 @@
 <template>
   <div class="juego container">
     <div class="row">
-      <button
-        class="acomodar"
-        @click="crearPartida"
-      >Nueva Partida</button>
+      <div><button
+          class="btn btn-success mb-2"
+          @click="crearPartida"
+        >Nueva Partida</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-sm-6 offset-3">
+        <h3 class="text-center">{{$route.params.no_partida.replace('-',' ')}}</h3>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-6">
-        <JuegoForm @opcion="getOpcion"></JuegoForm>
+        <JuegoForm
+          @opcion="getOpcion"
+          :userOpcion="partida.usuario-1"
+        ></JuegoForm>
       </div>
       <div class="col-md-6">
-        <JuegoForm></JuegoForm>
+        <JuegoForm :userOpcion="partida.usuario_1!=''?partida.usuario_2:''"></JuegoForm>
+      </div>
+      <div>
+        {{partida}}
       </div>
     </div>
   </div>
@@ -20,6 +34,8 @@
 import JuegoForm from '@/components/JuegoForm'
 import fireApp from '../config/_firebase.js'
 
+const partida = fireApp.firestore().collection('juego-1')
+
 export default {
   name: 'juego',
   components: {
@@ -27,22 +43,25 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
-      vm.obtenerPartida(to.params.no_partida)
+      // vm.obtenerPartida(to.params.no_partida)
+      vm.$bind('partida', partida.doc(to.params.no_partida))
     })
   },
   data () {
     return {
-      partida: ''
+      partida: {},
+      partidas: []
     }
   },
   firestore: {
     partida: fireApp.firestore().collection('juego1')
   },
   watch: {
-    id: {
-      inmediate: true,
-      handler (id) {
-        this.$bind('user', users.doc(id))
+    '$route.params': {
+      deep: true,
+      immediate: true,
+      handler (value) {
+        this.$bind('partida', partida.doc(value.no_partida))
       }
     }
   },
@@ -60,13 +79,8 @@ export default {
       })
     },
     getOpcion (opcion) {
-      alert(opcion)
+      fireApp.firestore().collection('juego-1').doc(this.$route.params.no_partida).update({ 'usuario_1': opcion })
     }
   }
 }
 </script>
-
-<style lang="scss">
-.acomodar {
-}
-</style>
