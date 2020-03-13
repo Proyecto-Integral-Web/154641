@@ -8,7 +8,7 @@ export default {
   },
 
   async checkUser () {
-    let user = fireApp.auth().currentUser
+    let user = await fireApp.auth().currentUser
     if (user) {
       return user
     }
@@ -16,15 +16,17 @@ export default {
   },
 
   async login (data) {
-    await fireApp.auth().signInWithEmailAndPassword(data.email, data.password).then(
-      (result) => {
+    await fireApp
+      .auth()
+      .signInWithEmailAndPassword(data.email, data.password)
+      .then(result => {
         console.log(result)
         router.push({ name: 'perfil' })
-      }
-    ).catch((err) => {
-      console.log(err)
-      return Promise.reject(err)
-    })
+      })
+      .catch(err => {
+        console.log(err)
+        return Promise.reject(err)
+      })
   },
 
   async Registrarse (data) {
@@ -52,9 +54,12 @@ export default {
           .updateCurrentUser(newUser)
           .catch(err => console.table(err))
       })
-      .catch((err) => {
+      .catch(err => {
         console.table(err)
       })
     console.log(data)
+  },
+  getUser () {
+    return fireApp.auth().currentUser
   }
 }

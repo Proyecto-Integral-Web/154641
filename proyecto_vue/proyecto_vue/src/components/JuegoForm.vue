@@ -32,6 +32,7 @@
 <script lang = "js">
 export default {
   name: 'JuegoForm',
+  props: ['userOpcion', 'displayName'],
   data () {
     return {
       options: {
@@ -53,6 +54,7 @@ export default {
 .renglon {
   background-color: burlywood;
   padding: 10px;
+  border: solid black 3px;
 }
 
 .opciones {

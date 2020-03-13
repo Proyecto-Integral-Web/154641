@@ -32,10 +32,7 @@ const routes = [
   {
     path: '/juego/:no_partida',
     name: 'juego',
-    component: Juego,
-    meta: {
-      auth: false
-    }
+    component: Juego
   },
   {
     path: '/',
