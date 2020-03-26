@@ -56,9 +56,9 @@ export default {
     JuegoForm
   },
   beforeRouteEnter (to, from, next) {
-    next(vm => {
+    next(async vm => {
       // vm.obtenerPartida(to.params.no_partida)
-      vm.user = Auth.getUser()
+      vm.user = await Auth.getUser()
       vm.$bind('partida', partida.doc(to.params.no_partida))
     })
   },

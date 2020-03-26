@@ -3,11 +3,14 @@
     <div id="nav">
       <router-link to="/">Ingresar</router-link> |
       <router-link to="/register">Crear Cuenta</router-link> |
-      <router-link :to="{
+      <router-link
+        :to="{
         name:'about'}"
-        :class="$route.name=='about'?'btn':''">About</router-link> |
+        :class="$route.name=='about'?'btn':''"
+      >About</router-link> |
       <router-link to="/perfil">Perfil</router-link> |
-      <router-link to="/juego">Juego</router-link>
+      <router-link to="/juego">Juego</router-link> |
+      <router-link to="/partida">Partidas</router-link>
     </div>
     <router-view />
   </div>

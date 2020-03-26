@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/LogIn.vue'
 import Register from '../views/Register.vue'
 import Juego from '../views/Juego.vue'
+import Partida from '../views/Partida.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/juego/:no_partida',
     name: 'juego',
     component: Juego
+  },
+  {
+    path: '/partida',
+    name: 'partida',
+    component: Partida
   },
   {
     path: '/',
