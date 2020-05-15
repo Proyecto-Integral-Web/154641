@@ -10,7 +10,8 @@
       >About</router-link> |
       <router-link to="/perfil">Perfil</router-link> |
       <router-link to="/juego">Juego</router-link> |
-      <router-link to="/partida">Partidas</router-link>
+      <router-link to="/partida">Partidas</router-link> |
+      <router-link to="/solodiseno">SoloDiseño</router-link>
     </div>
     <router-view />
   </div>

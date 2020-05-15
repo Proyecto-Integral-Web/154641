@@ -5,6 +5,7 @@ import Login from '../views/LogIn.vue'
 import Register from '../views/Register.vue'
 import Juego from '../views/Juego.vue'
 import Partida from '../views/Partida.vue'
+import SoloDiseno from '../views/SoloDiseno.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register
+  },
+  {
+    path: '/solodiseno',
+    name: 'solodiseno',
+    component: SoloDiseno
   },
   {
     path: '/perfil',
